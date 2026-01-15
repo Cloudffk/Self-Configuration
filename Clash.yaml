@@ -261,8 +261,7 @@ proxy-groups:
 
   - name: BPB节点
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Mickey.png
-    type: select
-     use:
+    use:
       - all-proxies
     filter: "(?i)BPB"
 
@@ -412,7 +411,7 @@ proxy-groups:
   - name: 🌍 国外媒体
     type: select
     proxies:
- - 🚀 节点选择
+      - 🚀 节点选择
       - ♻️ 自动选择
       - 🚀 手动切换
       - 香港节点
