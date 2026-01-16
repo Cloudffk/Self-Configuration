@@ -199,7 +199,7 @@ proxy-groups:
       - BPB节点
 
   # 📹 YouTube: YouTube 专用优化策略
-  - name: 📹 YouTube
+  - name: YouTube
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
     type: select
     proxies:
@@ -417,7 +417,7 @@ rules:
   - RULE-SET,Telegram,Telegram
   - RULE-SET,Crypto,国际流量
   - RULE-SET,Discord,国际流量
-  - RULE-SET,Google FCM,📧 Google FCM
+  - RULE-SET,Google FCM,Google FCM
   - RULE-SET,Google,谷歌服务
   - RULE-SET,Google Drive,谷歌服务
   - RULE-SET,YouTube Music,YouTube
