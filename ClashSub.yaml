@@ -46,6 +46,7 @@ proxy-groups:
   
   # 🇹🇼 Taiwan: 自动筛选台湾地区的节点
   - name: 台湾节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
     type: url-test
     interval: 300
     tolerance: 50
@@ -154,7 +155,7 @@ proxy-groups:
 
   # 🎯 国内流量: 处理已知国内网站的直连或代理策略
   - name: 国内流量
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/CN.png
     type: select
     proxies:
       - DIRECT
@@ -300,7 +301,7 @@ proxy-groups:
 
   # 🌍 国外媒体: 其他未分类的国际视频/音乐流媒体
   - name: 国外媒体
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/GlobalMedia.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
     type: select
     proxies:
       - 节点选择
@@ -341,7 +342,7 @@ proxy-groups:
 
   # Ⓜ️ Microsoft: 微软综合服务策略
   - name: Microsoft
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bing.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Copilot.png
     type: select
     proxies:
       - DIRECT
