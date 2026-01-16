@@ -262,6 +262,7 @@ proxy-groups:
     filter: ^(?!.*((?i)港|HK|Hong Kong|日|JP|Japan|美|US|United States|Balance|新|SG|Singapore|台|TW|Taiwan|韩|KR|Korea|英|UK|United Kingdom|德|DE|Germany|法|FR|France|BPB)).*$
 
   - name: BPB节点
+    type: select
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Mickey.png
     use:
       - all-proxies
