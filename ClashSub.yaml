@@ -1,12 +1,13 @@
 # 代理组配置
 proxy-groups:
   # 🚀 节点选择: 手动选择节点或策略
-  - name: 🚀 节点选择
+  - name: 节点选择
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     type: select
     proxies:
       - DIRECT
-      - ♻️ 自动选择
-      - 🚀 手动切换
+      - 自动选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -20,12 +21,14 @@ proxy-groups:
       - BPB节点
 
   # 🚀 手动切换: 具体节点的列表
-  - name: 🚀 手动切换
+  - name: 手动切换
+    icon: https://cdn.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     type: select
     include-all: true
 
   # ♻️ 自动选择: 根据延迟自动选择最优节点
   - name: ♻️ 自动选择
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -34,36 +37,13 @@ proxy-groups:
 
   # 🇭🇰 Hong Kong: 自动筛选香港地区的节点
   - name: 香港节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
     type: url-test
     interval: 300
     tolerance: 50
     include-all: true
     filter: (?i)港|HK|Hong Kong
-
-  # 🇯🇵 Japan: 自动筛选日本地区的节点
-  - name: 日本节点
-    type: url-test
-    interval: 300
-    tolerance: 50
-    include-all: true
-    filter: (?i)日|JP|Japan
-
-  # 🇺🇸 United States: 自动筛选美国地区的节点
-  - name: 美国节点
-    type: url-test
-    interval: 300
-    tolerance: 50
-    include-all: true
-    filter: (?i)美|US|United States
-
-  # 🇸🇬 Singapore: 自动筛选新加坡地区的节点
-  - name: 狮城节点
-    type: url-test
-    interval: 300
-    tolerance: 50
-    include-all: true
-    filter: (?i)新|SG|Singapore
-
+  
   # 🇹🇼 Taiwan: 自动筛选台湾地区的节点
   - name: 台湾节点
     type: url-test
@@ -71,17 +51,46 @@ proxy-groups:
     tolerance: 50
     include-all: true
     filter: (?i)台|TW|Taiwan
+  
+  # 🇯🇵 Japan: 自动筛选日本地区的节点
+  - name: 日本节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+    type: url-test
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: (?i)日|JP|Japan
+
+  # 🇸🇬 Singapore: 自动筛选新加坡地区的节点
+  - name: 狮城节点
+    https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    type: url-test
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: (?i)新|SG|Singapore
 
   # 🇰🇷 Korea: 自动筛选韩国地区的节点
   - name: 韩国节点
+    https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
     type: url-test
     interval: 300
     tolerance: 50
     include-all: true
     filter: (?i)韩|KR|Korea
 
+   # 🇺🇸 United States: 自动筛选美国地区的节点
+  - name: 美国节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    type: url-test
+    interval: 300
+    tolerance: 50
+    include-all: true
+    filter: (?i)美|US|United States
+  
   # 🇬🇧 United Kingdom: 自动筛选英国地区的节点
   - name: 英国节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_Kingdom.png
     type: url-test
     interval: 300
     tolerance: 50
@@ -90,6 +99,7 @@ proxy-groups:
 
   # 🇩🇪 Germany: 自动筛选德国地区的节点
   - name: 德国节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Germany.png
     type: url-test
     interval: 300
     tolerance: 50
@@ -98,6 +108,7 @@ proxy-groups:
 
   # 🇫🇷 France: 自动筛选法国地区的节点
   - name: 法国节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/France.png
     type: url-test
     interval: 300
     tolerance: 50
@@ -106,6 +117,7 @@ proxy-groups:
 
   # 🌍 Other Regions: 自动筛选主要地区以外的所有节点
   - name: 其他节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Area.png
     type: url-test
     interval: 300
     tolerance: 50
@@ -113,20 +125,21 @@ proxy-groups:
     filter: ^(?!.*((?i)港|HK|Hong Kong|日|JP|Japan|美|US|United States|Balance|新|SG|Singapore|台|TW|Taiwan|韩|KR|Korea|英|UK|United Kingdom|德|DE|Germany|法|FR|France|BPB)).*$
 
   - name: BPB节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Mickey.png
     type: url-test
     interval: 300
     tolerance: 50
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Mickey.png
     include-all: true
     filter: (?i)BPB
 
   # 🌐 国际流量: 处理未命中的国际网站流量
-  - name: 🌐 国际流量
+  - name: 国际流量
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
     type: select
     proxies:
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🚀 手动切换
+      - 节点选择
+      - 自动选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -141,13 +154,15 @@ proxy-groups:
 
   # 🎯 国内流量: 处理已知国内网站的直连或代理策略
   - name: 🎯 国内流量
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png
     type: select
     proxies:
       - DIRECT
       - 🚀 节点选择
 
   # 🚫 国内广告: 拦截国内应用内的广告
-  - name: 🚫 国内广告
+  - name: 国内广告
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
     type: select
     proxies:
       - REJECT
@@ -155,20 +170,22 @@ proxy-groups:
       - 🚀 节点选择
 
   # 🚫 国外广告: 拦截国外应用或网页广告
-  - name: 🚫 国外广告
+  - name: 国外广告
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
     type: select
     proxies:
       - REJECT
       - DIRECT
-      - 🚀 节点选择
+      - 节点选择
 
   # 🤖 AI服务: 针对 ChatGPT, Claude, Gemini 等 AI 服务的策略
-  - name: 🤖 AI服务
+  - name: AI服务
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AI.png
     type: select
     proxies:
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🚀 手动切换
+      - 节点选择
+      - 自动选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -183,11 +200,12 @@ proxy-groups:
 
   # 📹 YouTube: YouTube 专用优化策略
   - name: 📹 YouTube
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
     type: select
     proxies:
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🚀 手动切换
+      - 节点选择
+      - 自动选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -201,12 +219,13 @@ proxy-groups:
       - BPB节点
 
   # Ⓜ️ 微软服务: 微软 Office, Outlook, OneDrive 等服务策略
-  - name: Ⓜ️ 微软服务
+  - name: 微软办公
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
     type: select
     proxies:
       - DIRECT
-      - 🚀 节点选择
-      - 🚀 手动切换
+      - 节点选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -220,12 +239,13 @@ proxy-groups:
       - BPB节点
 
   # 🔍 谷歌服务: Google 搜索、地图及其他非 YouTube 谷歌服务
-  - name: 🔍 谷歌服务
+  - name: 谷歌服务
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google.png
     type: select
     proxies:
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🚀 手动切换
+      - 节点选择
+      - 自动选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -239,12 +259,13 @@ proxy-groups:
       - BPB节点
 
   # 📧 Google FCM: 谷歌推送通知服务策略
-  - name: 📧 Google FCM
+  - name: Google FCM
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
     type: select
     proxies:
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🚀 手动切换
+      - 节点选择
+      - 自动选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -258,12 +279,13 @@ proxy-groups:
       - BPB节点
 
   # 🍎 Apple服务: App Store, iCloud, Apple Music 等苹果服务
-  - name: 🍎 Apple服务
+  - name: Apple服务
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
     type: select
     proxies:
       - DIRECT
-      - 🚀 节点选择
-      - 🚀 手动切换
+      - 节点选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -277,12 +299,13 @@ proxy-groups:
       - BPB节点
 
   # 🌍 国外媒体: 其他未分类的国际视频/音乐流媒体
-  - name: 🌍 国外媒体
+  - name: 国外媒体
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/GlobalMedia.png
     type: select
     proxies:
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🚀 手动切换
+      - 节点选择
+      - 自动选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -298,11 +321,12 @@ proxy-groups:
 
   # ✈️ Telegram: Telegram 聊天应用专用策略
   - name: ✈️ Telegram
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
     type: select
     proxies:
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🚀 手动切换
+      - 节点选择
+      - 自动选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -316,13 +340,14 @@ proxy-groups:
       - BPB节点
 
   # Ⓜ️ Microsoft: 微软综合服务策略
-  - name: Ⓜ️ Microsoft
+  - name: Microsoft
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
     type: select
     proxies:
       - DIRECT
-      - 🚀 节点选择
-      - ♻️ 自动选择
-      - 🚀 手动切换
+      - 节点选择
+      - 自动选择
+      - 手动切换
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -336,83 +361,84 @@ proxy-groups:
       - BPB节点
 
   # 🫧 WeChat: 微信特殊处理(通常建议直连)
-  - name: 🫧 WeChat
+  - name: WeChat
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/WeChat.png
     type: select
     proxies:
       - DIRECT
-      - 🚀 节点选择
-      - 🚀 手动切换
+      - 节点选择
+      - 手动切换
 
 # 分流规则
 rules:
-  - RULE-SET,AdBlock,🚫 国外广告
-  - RULE-SET,HTTPDNS,🚫 国外广告
+  - RULE-SET,AdBlock,国外广告
+  - RULE-SET,HTTPDNS,国外广告
   - RULE-SET,Special,DIRECT
-  - RULE-SET,AI Suite,🤖 AI服务
-  - RULE-SET,Netflix,🌍 国外媒体
-  - RULE-SET,Disney Plus,🌍 国外媒体
-  - RULE-SET,YouTube,📹 YouTube
-  - RULE-SET,Max,🌍 国外媒体
-  - RULE-SET,Spotify,🌍 国外媒体
-  - RULE-SET,Bilibili,🎯 国内流量
-  - RULE-SET,IQ,🎯 国内流量
-  - RULE-SET,IQIYI,🎯 国内流量
-  - RULE-SET,Letv,🎯 国内流量
-  - RULE-SET,Netease Music,🎯 国内流量
-  - RULE-SET,Tencent Video,🎯 国内流量
-  - RULE-SET,WeTV,🎯 国内流量
-  - RULE-SET,Youku,🎯 国内流量
-  - RULE-SET,Abema TV,🌍 国外媒体
-  - RULE-SET,Bahamut,🌍 国外媒体
-  - RULE-SET,DMM,🌍 国外媒体
-  - RULE-SET,Fox+,🌍 国外媒体
-  - RULE-SET,Hulu Japan,🌍 国外媒体
-  - RULE-SET,Japonx,🌍 国外媒体
-  - RULE-SET,JOOX,🌍 国外媒体
-  - RULE-SET,KKBOX,🌍 国外媒体
-  - RULE-SET,KKTV,🌍 国外媒体
-  - RULE-SET,Line TV,🌍 国外媒体
-  - RULE-SET,myTV SUPER,🌍 国外媒体
-  - RULE-SET,Niconico,🌍 国外媒体
-  - RULE-SET,ViuTV,🌍 国外媒体
-  - RULE-SET,ABC,🌍 国外媒体
-  - RULE-SET,Amazon,🌍 国外媒体
-  - RULE-SET,BBC iPlayer,🌍 国外媒体
-  - RULE-SET,DAZN,🌍 国外媒体
-  - RULE-SET,Discovery Plus,🌍 国外媒体
-  - RULE-SET,encoreTVB,🌍 国外媒体
-  - RULE-SET,F1 TV,🌍 国外媒体
-  - RULE-SET,Fox Now,🌍 国外媒体
-  - RULE-SET,Hulu,🌍 国外媒体
-  - RULE-SET,Pandora,🌍 国外媒体
-  - RULE-SET,PBS,🌍 国外媒体
-  - RULE-SET,Pornhub,🌍 国外媒体
-  - RULE-SET,Soundcloud,🌍 国外媒体
-  - RULE-SET,Telegram,✈️ Telegram
-  - RULE-SET,Crypto,🌐 国际流量
-  - RULE-SET,Discord,🌐 国际流量
+  - RULE-SET,AI Suite,AI服务
+  - RULE-SET,Netflix,国外媒体
+  - RULE-SET,Disney Plus,国外媒体
+  - RULE-SET,YouTube,YouTube
+  - RULE-SET,Max,国外媒体
+  - RULE-SET,Spotify,国外媒体
+  - RULE-SET,Bilibili,国内流量
+  - RULE-SET,IQ,国内流量
+  - RULE-SET,IQIYI,国内流量
+  - RULE-SET,Letv,国内流量
+  - RULE-SET,Netease Music,国内流量
+  - RULE-SET,Tencent Video,国内流量
+  - RULE-SET,WeTV,国内流量
+  - RULE-SET,Youku,国内流量
+  - RULE-SET,Abema TV,国外媒体
+  - RULE-SET,Bahamut,国外媒体
+  - RULE-SET,DMM,国外媒体
+  - RULE-SET,Fox+,国外媒体
+  - RULE-SET,Hulu Japan,国外媒体
+  - RULE-SET,Japonx,国外媒体
+  - RULE-SET,JOOX,国外媒体
+  - RULE-SET,KKBOX,国外媒体
+  - RULE-SET,KKTV,国外媒体
+  - RULE-SET,Line TV,国外媒体
+  - RULE-SET,myTV SUPER,国外媒体
+  - RULE-SET,Niconico,国外媒体
+  - RULE-SET,ViuTV,国外媒体
+  - RULE-SET,ABC,国外媒体
+  - RULE-SET,Amazon,国外媒体
+  - RULE-SET,BBC iPlayer,国外媒体
+  - RULE-SET,DAZN,国外媒体
+  - RULE-SET,Discovery Plus,国外媒体
+  - RULE-SET,encoreTVB,国外媒体
+  - RULE-SET,F1 TV,国外媒体
+  - RULE-SET,Fox Now,国外媒体
+  - RULE-SET,Hulu,国外媒体
+  - RULE-SET,Pandora,国外媒体
+  - RULE-SET,PBS,国外媒体
+  - RULE-SET,Pornhub,国外媒体
+  - RULE-SET,Soundcloud,国外媒体
+  - RULE-SET,Telegram,Telegram
+  - RULE-SET,Crypto,国际流量
+  - RULE-SET,Discord,国际流量
   - RULE-SET,Google FCM,📧 Google FCM
-  - RULE-SET,Google,🔍 谷歌服务
-  - RULE-SET,Google Drive,🔍 谷歌服务
-  - RULE-SET,YouTube Music,📹 YouTube
-  - RULE-SET,Google Search,🔍 谷歌服务
-  - RULE-SET,Microsoft,Ⓜ️ Microsoft
-  - RULE-SET,PayPal,🌐 国际流量
-  - RULE-SET,Scholar,🔍 谷歌服务
-  - RULE-SET,Speedtest,🌐 国际流量
-  - RULE-SET,Steam,🌐 国际流量
-  - RULE-SET,TikTok,🌐 国际流量
-  - RULE-SET,Apple Music,🍎 Apple服务
-  - RULE-SET,Apple News,🍎 Apple服务
-  - RULE-SET,Apple TV,🍎 Apple服务
-  - RULE-SET,Apple,🍎 Apple服务
-  - RULE-SET,miHoYo,🎯 国内流量
-  - RULE-SET,PROXY,🌐 国际流量
-  - RULE-SET,Domestic,🎯 国内流量
-  - RULE-SET,Domestic IPs,🎯 国内流量
+  - RULE-SET,Google,谷歌服务
+  - RULE-SET,Google Drive,谷歌服务
+  - RULE-SET,YouTube Music,YouTube
+  - RULE-SET,Google Search,谷歌服务
+  - RULE-SET,Microsoft,Microsoft
+  - RULE-SET,PayPal,国际流量
+  - RULE-SET,Scholar,谷歌服务
+  - RULE-SET,Speedtest,国际流量
+  - RULE-SET,Steam,国际流量
+  - RULE-SET,TikTok,国际流量
+  - RULE-SET,Apple Music,Apple服务
+  - RULE-SET,Apple News,Apple服务
+  - RULE-SET,Apple TV,Apple服务
+  - RULE-SET,Apple,Apple服务
+  - RULE-SET,miHoYo,国内流量
+  - RULE-SET,PROXY,国际流量
+  - RULE-SET,Domestic,国内流量
+  - RULE-SET,Domestic IPs,国内流量
   - RULE-SET,LAN,DIRECT
-  - GEOIP,CN,🎯 国内流量
-  - MATCH,🌐 国际流量
+  - GEOIP,CN,国内流量
+  - MATCH,国际流量
 
 # 规则提供者
 rule-providers:
