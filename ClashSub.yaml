@@ -87,7 +87,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     include-all: true
-    filter: (?i)美|US|United States
+    filter: (?i)美|洛杉矶|US|United States
   
   # 🇬🇧 United Kingdom: 自动筛选英国地区的节点
   - name: 英国节点
