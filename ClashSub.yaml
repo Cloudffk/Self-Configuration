@@ -341,7 +341,7 @@ proxy-groups:
 
   # Ⓜ️ Microsoft: 微软综合服务策略
   - name: Microsoft
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bing.png
     type: select
     proxies:
       - DIRECT
