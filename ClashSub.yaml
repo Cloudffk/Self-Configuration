@@ -63,7 +63,7 @@ proxy-groups:
 
   # 🇸🇬 Singapore: 自动筛选新加坡地区的节点
   - name: 狮城节点
-    https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     type: url-test
     interval: 300
     tolerance: 50
