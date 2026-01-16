@@ -68,6 +68,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     include-all: true
+    include-all: true
     filter: (?i)新|SG|Singapore
 
   # 🇰🇷 Korea: 自动筛选韩国地区的节点
