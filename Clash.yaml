@@ -424,8 +424,6 @@ proxy-groups:
       - 其他节点
       - BPB节点
       - DIRECT
-    use:
-      - all-proxies
 
   # ✈️ Telegram: Telegram 聊天应用专用策略
   - name: ✈️ Telegram
