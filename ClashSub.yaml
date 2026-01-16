@@ -68,12 +68,11 @@ proxy-groups:
     interval: 300
     tolerance: 50
     include-all: true
-    include-all: true
     filter: (?i)新|SG|Singapore
 
   # 🇰🇷 Korea: 自动筛选韩国地区的节点
   - name: 韩国节点
-    https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
     type: url-test
     interval: 300
     tolerance: 50
