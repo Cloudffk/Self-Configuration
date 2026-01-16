@@ -153,12 +153,12 @@ proxy-groups:
       - BPB节点
 
   # 🎯 国内流量: 处理已知国内网站的直连或代理策略
-  - name: 🎯 国内流量
+  - name: 国内流量
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/China.png
     type: select
     proxies:
       - DIRECT
-      - 🚀 节点选择
+      - 节点选择
 
   # 🚫 国内广告: 拦截国内应用内的广告
   - name: 国内广告
@@ -167,7 +167,7 @@ proxy-groups:
     proxies:
       - REJECT
       - DIRECT
-      - 🚀 节点选择
+      - 节点选择
 
   # 🚫 国外广告: 拦截国外应用或网页广告
   - name: 国外广告
@@ -219,7 +219,7 @@ proxy-groups:
       - BPB节点
 
   # Ⓜ️ 微软服务: 微软 Office, Outlook, OneDrive 等服务策略
-  - name: 微软办公
+  - name: 微软服务
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
     type: select
     proxies:
@@ -320,7 +320,7 @@ proxy-groups:
       - DIRECT
 
   # ✈️ Telegram: Telegram 聊天应用专用策略
-  - name: ✈️ Telegram
+  - name: Telegram
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
     type: select
     proxies:
