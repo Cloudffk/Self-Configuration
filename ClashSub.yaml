@@ -131,7 +131,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     include-all: true
-    filter: (?i)BPB
+    filter: (?i)BPB|💦
 
   # 🌐 国际流量: 处理未命中的国际网站流量
   - name: 国际流量
