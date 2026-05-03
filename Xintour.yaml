@@ -1,224 +1,73 @@
-# 代理组配置
-proxy-groups:
-  # 🚀 节点选择: 手动选择节点或策略
-  - name: 节点选择
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
-    type: select
-    proxies:
-      - DIRECT
-      - 自动选择
-      - 手动切换
+/**
+ * Sub-Store 修复版：统一重命名 BPB 节点为 ⭐Xintour
+ * 解决了可能导致 500 错误的变量引用和数组操作问题
+ */
 
-  # 🚀 手动切换: 具体节点的列表
-  - name: 手动切换
-    icon: https://cdn.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
-    type: select
-    include-all: true
+function operator(proxies) {
+  // 获取参数，增加兼容性处理
+  const arguments_ = (typeof $arguments !== 'undefined') ? $arguments : {};
+  const FGF = arguments_.fgf ? decodeURI(arguments_.fgf) : " ";
+  const XHFGF = arguments_.sn ? decodeURI(arguments_.sn) : " ";
+  const numone = arguments_.one || false;
 
-  # ♻️ 自动选择: 根据延迟自动选择最优节点
-  - name: 自动选择
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-all: true
+  const processedProxies = proxies.map((e) => {
+    // 1. 自动修复 Reality 参数报错
+    if (e.type === 'vless' && e['reality-opts']) {
+      let sid = e['reality-opts']['short-id'] || "";
+      if (sid !== "" && (sid.length % 2 !== 0 || !/^[0-9a-fA-F]+$/.test(sid))) {
+        e['reality-opts']['short-id'] = ""; 
+      }
+    }
 
-  # 🌐 国际流量: 处理未命中的国际网站流量
-  - name: 国际流量
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 手动切换
+    const originalName = e.name || "";
+    const isSpecial = /BPB|💦/i.test(originalName);
+    
+    // 2. 标签提取
+    let tags = [];
+    const speed = originalName.match(/[\d.]+(MB\/s|KB\/s|Gbps|Mbps)/i);
+    if (speed) tags.push(speed[0]);
+    if (/GPT/i.test(originalName)) tags.push("GPT⁺");
+    if (/NF|Netflix/i.test(originalName)) tags.push("NF");
+    if (/YT|YouTube/i.test(originalName)) tags.push("YT");
+    
+    let tempTag = tags.length > 0 ? `[${tags.join("|")}]` : "";
 
-  # 🎯 国内流量: 处理已知国内网站的直连或代理策略
-  - name: 国内流量
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/CN.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
+    // 3. 重命名逻辑：包含特殊字符则命名为 ⭐Xintour，否则清理原名
+    if (isSpecial) {
+      e.name = "⭐Xintour";
+    } else {
+      e.name = originalName.replace(/\[.*?\]/g, "").trim(); 
+    }
+    
+    // 临时存储标签，稍后拼接
+    e._tempTag = tempTag;
+    return e;
+  });
 
-  # 🚫 国内广告: 拦截国内应用内的广告
-  - name: 国内广告
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-      - 节点选择
+  // 4. 序号处理 (使用更稳健的重命名逻辑)
+  const nameGroups = {};
+  processedProxies.forEach(proxy => {
+    const baseName = proxy.name;
+    if (!nameGroups[baseName]) nameGroups[baseName] = [];
+    nameGroups[baseName].push(proxy);
+  });
 
-  # 🚫 国外广告: 拦截国外应用或网页广告
-  - name: 国外广告
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-      - 节点选择
+  const finalProxies = [];
+  Object.keys(nameGroups).forEach(baseName => {
+    const group = nameGroups[baseName];
+    group.forEach((proxy, index) => {
+      // 拼接序号和标签
+      const suffix = group.length > 1 ? `${XHFGF}${(index + 1).toString().padStart(2, "0")}` : "";
+      proxy.name = `${proxy.name}${suffix}${proxy._tempTag ? FGF + proxy._tempTag : ""}`;
+      delete proxy._tempTag;
+      finalProxies.push(proxy);
+    });
+  });
 
-  # 🤖 AI服务: 针对 ChatGPT, Claude, Gemini 等 AI 服务的策略
-  - name: AI服务
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AI.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 手动切换
-
-  # 📹 YouTube: YouTube 专用优化策略
-  - name: YouTube
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 手动切换
-
-  # Ⓜ️ 微软服务: 微软 Office, Outlook, OneDrive 等服务策略
-  - name: 微软服务
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 手动切换
-
-  # 🔍 谷歌服务: Google 搜索、地图及其他非 YouTube 谷歌服务
-  - name: 谷歌服务
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 手动切换
-
-  # 📧 Google FCM: 谷歌推送通知服务策略
-  - name: Google FCM
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 手动切换
-
-  # 🍎 Apple服务: App Store, iCloud, Apple Music 等苹果服务
-  - name: Apple服务
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 手动切换
-
-  # 🌍 国外媒体: 其他未分类的国际视频/音乐流媒体
-  - name: 国外媒体
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 手动切换
-      - DIRECT
-
-  # ✈️ Telegram: Telegram 聊天应用专用策略
-  - name: Telegram
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 手动切换
-
-  # Ⓜ️ Microsoft: 微软综合服务策略
-  - name: Microsoft
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Copilot.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 自动选择
-      - 手动切换
-
-  # 🫧 WeChat: 微信特殊处理(通常建议直连)
-  - name: WeChat
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/WeChat.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 手动切换
-
-# 分流规则
-rules:
-  - RULE-SET,AdBlock,国外广告
-  - RULE-SET,HTTPDNS,国外广告
-  - RULE-SET,Special,DIRECT
-  - RULE-SET,AI Suite,AI服务
-  - RULE-SET,Netflix,国外媒体
-  - RULE-SET,Disney Plus,国外媒体
-  - RULE-SET,YouTube,YouTube
-  - RULE-SET,Max,国外媒体
-  - RULE-SET,Spotify,国外媒体
-  - RULE-SET,Bilibili,国内流量
-  - RULE-SET,IQ,国内流量
-  - RULE-SET,IQIYI,国内流量
-  - RULE-SET,Letv,国内流量
-  - RULE-SET,Netease Music,国内流量
-  - RULE-SET,Tencent Video,国内流量
-  - RULE-SET,WeTV,国内流量
-  - RULE-SET,Youku,国内流量
-  - RULE-SET,Abema TV,国外媒体
-  - RULE-SET,Bahamut,国外媒体
-  - RULE-SET,DMM,国外媒体
-  - RULE-SET,Fox+,国外媒体
-  - RULE-SET,Hulu Japan,国外媒体
-  - RULE-SET,Japonx,国外媒体
-  - RULE-SET,JOOX,国外媒体
-  - RULE-SET,KKBOX,国外媒体
-  - RULE-SET,KKTV,国外媒体
-  - RULE-SET,Line TV,国外媒体
-  - RULE-SET,myTV SUPER,国外媒体
-  - RULE-SET,Niconico,国外媒体
-  - RULE-SET,ViuTV,国外媒体
-  - RULE-SET,ABC,国外媒体
-  - RULE-SET,Amazon,国外媒体
-  - RULE-SET,BBC iPlayer,国外媒体
-  - RULE-SET,DAZN,国外媒体
-  - RULE-SET,Discovery Plus,国外媒体
-  - RULE-SET,encoreTVB,国外媒体
-  - RULE-SET,F1 TV,国外媒体
-  - RULE-SET,Fox Now,国外媒体
-  - RULE-SET,Hulu,国外媒体
-  - RULE-SET,Pandora,国外媒体
-  - RULE-SET,PBS,国外媒体
-  - RULE-SET,Pornhub,国外媒体
-  - RULE-SET,Soundcloud,国外媒体
-  - RULE-SET,Telegram,Telegram
-  - RULE-SET,Crypto,国际流量
-  - RULE-SET,Discord,国际流量
-  - RULE-SET,Google FCM,Google FCM
-  - RULE-SET,Google,谷歌服务
-  - RULE-SET,Google Drive,谷歌服务
-  - RULE-SET,YouTube Music,YouTube
-  - RULE-SET,Google Search,谷歌服务
-  - RULE-SET,Microsoft,Microsoft
-  - RULE-SET,PayPal,国际流量
-  - RULE-SET,Scholar,谷歌服务
-  - RULE-SET,Speedtest,国际流量
-  - RULE-SET,Steam,国际流量
-  - RULE-SET,TikTok,国际流量
-  - RULE-SET,Apple Music,Apple服务
-  - RULE-SET,Apple News,Apple服务
-  - RULE-SET,Apple TV,Apple服务
-  - RULE-SET,Apple,Apple服务
-  - RULE-SET,miHoYo,国内流量
-  - RULE-SET,PROXY,国际流量
-  - RULE-SET,Domestic,国内流量
-  - RULE-SET,Domestic IPs,国内流量
-  - RULE-SET,LAN,DIRECT
-  - GEOIP,CN,国内流量
-  - MATCH,国际流量
+  // 排序：⭐Xintour 排在最后
+  return finalProxies.sort((a, b) => {
+    const aSpec = a.name.includes('⭐Xintour');
+    const bSpec = b.name.includes('⭐Xintour');
+    return aSpec - bSpec;
+  });
+}
